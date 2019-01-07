@@ -31,10 +31,15 @@ def main():
 
     trained_model = rfc.fit(train_x, train_y.values.ravel())
 
-    predictions = trained_model.predict(test_x)
+    predictions_train = trained_model.predict(train_x)
+    predictions_test = trained_model.predict(test_x)
 
-    print('Train Accuracy: {0}'.format(accuracy_score(train_y, predictions)))
-    print('Test Accuracy: {0}'.format(accuracy_score(test_y, predictions)))
+    print('Train Accuracy: {0}'.format(accuracy_score(train_y, predictions_train)))
+    print('Test Accuracy: {0}'.format(accuracy_score(test_y, predictions_test)))
+
+    print(pd.crosstab(index=test_y.values.ravel(), columns=predictions_test, rownames=["actual"], colnames=["predictions"]))
+
+    visualize_classifier(rfc, train_x, train_y.values.ravel());
 
 if __name__ == "__main__":
     main()
