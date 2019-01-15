@@ -27,9 +27,11 @@ def main():
     test_size = 0.5
     random_state = 0
 
-    train_x, test_x, train_y, test_y = train_test_split(data, target, train_size= train_size, test_size= test_size, random_state = random_state)
+    train_x, test_x, train_y, test_y = train_test_split(data, target, train_size = train_size, test_size = test_size, random_state = random_state)
+    
+    n_estimators = 10
 
-    rfc = RandomForestClassifier(n_estimators = 10)
+    rfc = RandomForestClassifier(n_estimators = n_estimators)
 
     trained_model = rfc.fit(train_x, train_y.values.ravel())
 

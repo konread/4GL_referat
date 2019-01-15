@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 
 def main():
-    names = ["top-left-square", "top-middle-square", "top-right-square", "top-right-square", "middle-middle-square", "middle-right-square", "bottom-left-square", "bottom-middle-square", "bottom-right-square", "class"]
+    names = ["top-left-square", "top-middle-square", "top-right-square", "middle-left-square", "middle-middle-square", "middle-right-square", "bottom-left-square", "bottom-middle-square", "bottom-right-square", "class"]
 
     dataset = pd.read_csv('data_binary.csv', names = names)
 
@@ -27,7 +27,9 @@ def main():
 
     train_x, test_x, train_y, test_y = train_test_split(data, target, train_size = train_size, test_size = test_size, random_state = random_state)
 
-    rfc = RandomForestClassifier(n_estimators = 10)
+    n_estimators = 10
+
+    rfc = RandomForestClassifier(n_estimators = n_estimators)
 
     trained_model = rfc.fit(train_x, train_y.values.ravel())
 
@@ -38,8 +40,6 @@ def main():
     print('Test Accuracy: {0}'.format(accuracy_score(test_y, predictions_test)))
 
     print(pd.crosstab(index=test_y.values.ravel(), columns=predictions_test, rownames=["actual"], colnames=["predictions"]))
-
-    visualize_classifier(rfc, train_x, train_y.values.ravel());
 
 if __name__ == "__main__":
     main()
