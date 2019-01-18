@@ -9,7 +9,7 @@
     <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupFile>classifier_data_binary.R</StartupFile>
+    <StartupFile>classifier_data_multi_class.R</StartupFile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
